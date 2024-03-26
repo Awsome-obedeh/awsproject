@@ -12,7 +12,7 @@ const userSchema=({
         required:true
     },
     phone:{
-        type:Number,
+        type:String,
         trim:true,
         required:true
     },
@@ -28,5 +28,5 @@ const userSchema=({
     },
 })
 
-const userModel=mongoose.models || mongoose.model('user',userSchema)
+const userModel=mongoose.models.user || mongoose.model('user',userSchema)
 export default userModel

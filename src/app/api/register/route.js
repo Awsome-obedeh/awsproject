@@ -1,13 +1,15 @@
 import userModel from "@/models/register"
+import connect from "@/utils/db"
 import { NextResponse } from "next/server"
 
 export const POST=async (request)=>{
     try{
-
+        connect();
         const {firstname,lastname,email,company,phone}=await request.json()
+        console.log(firstname,lastname,email,company,phone)
         // store user info in database
 
-        const user=userModel.create({firstname,lastname,company,phone})
+        const user=userModel({firstname,lastname,company,phone,email})
 
         await user.save()
         if(user){
